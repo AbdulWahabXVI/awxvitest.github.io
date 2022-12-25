@@ -1,0 +1,117 @@
+<style>
+  a#nla{
+    color: rgba(255, 255, 255, 0.5);
+  }
+  a#nla:hover{
+    color: rgba(255, 255, 255, 1);
+  }
+  
+    button[id=searchsub]
+    {
+      border-radius: 20px; width: 43px; height: 40px;
+      box-shadow: 0 0 5px transparent;
+      color: white;
+      border-radius: 20px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    button[id=searchsub]:hover
+    {
+      box-shadow: 0 0 5px transparent;
+      color: white;
+      border-radius: 20px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+    button[id=searchsub]:active
+    {
+      box-shadow: 0 0 5px transparent;
+      color: white;
+      border-radius: 20px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 1);
+    }
+    svg[id=searchsubsvg]
+    {
+      color: rgba(255, 255, 255, 0.1);
+      background: transparent;
+    }
+    svg[id=searchsubsvg]:hover
+    {
+      color: rgba(255, 255, 255, 0.5);
+      background: transparent;
+    }
+    svg[id=searchsubsvg]:focus
+    {
+      color: rgba(255, 255, 255, 1);
+      background: transparent;
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid">
+    <a id="nla" class="navbar-brand" href="{%url 'home'%}">My Site</a>
+    <button style="border-radius: 20px; height: 40px;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+      </svg>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a id="nla" class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a id="nla" class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a id="nla" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Manage Event
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'list-events' %}">Events</a></li>
+            <li><a class="dropdown-item" href="{% url 'add-event' %}">Add Event</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a id="nla" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Manage Venue
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'list-venues' %}">Venue</a></li>
+            <li><a class="dropdown-item" href="{% url 'add-venue' %}">Add Venue</a></li>
+          </ul>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a id="nla" class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a id="nla" class="nav-link" href="{% url 'register-user' %}">Register</a>
+        </li>
+        <li class="nav-item">
+          <a id="nla" class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link disabled" style="color: grey;">Disabled</a>
+        </li>
+      </ul>
+    </div>
+    <form class="d-flex" method=POST action="{% url 'search-venues'%}">
+      {% csrf_token %}
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="searched">
+      <button id="searchsub" class="btn btn-outline-secondary btn-sm" type="submit">
+        <svg id="searchsubsvg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+</nav>

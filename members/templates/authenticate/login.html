@@ -1,0 +1,27 @@
+{%extends 'events/base.html'%}
+{%block content%}
+<center>
+    <br>
+    <h1>
+        Login
+    </h1>
+    <br>
+    <div class="card" style="border-radius: 20px; width: 25rem;">
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Username">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-outline-secondary btn-sm" style="border-radius: 20px;">
+                </form>
+            </form>
+        </div>
+    </div>   
+</center>
+{%endblock%}

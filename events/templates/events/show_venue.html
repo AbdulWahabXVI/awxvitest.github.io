@@ -1,0 +1,33 @@
+{%extends 'events/base.html'%}
+
+{%block content%}
+<center>
+    <br>
+    <h1>
+        Venue
+    </h1>
+    <br>
+    <div class="card" style="border-radius: 20px;">
+        <div class="card-body">
+            <h4 class="card-title">
+                {{ venue }}
+            </h4>
+            <p class="card-text"></p>
+            <ul>    
+                <b style="font-size: 18px;">Address:</b> <i>{{venue.address}}</i><br>
+                <b style="font-size: 18px;">Zip Code:</b> <i>{{venue.zip_code}}</i><br>
+                <b style="font-size: 18px;">Phone No:</b> <i>{{venue.phone}}</i><br>
+                <b style="font-size: 18px;">Web URL:</b> <i><a href="{{ venue.web }}">{{venue.web}}</a></i><br>
+                <b style="font-size: 18px;">Email Address:</b> <i>{{venue.email_address}}</i><br>
+            </ul>
+            <a href="{% url 'update-venue' venue.id %}" class="btn btn-outline-secondary btn-sm" style="border-radius: 20px;">
+                Update Event
+            </a>
+            <a href="{% url 'delete-venue' venue.id %}" class="btn btn-outline-danger btn-sm" style="border-radius: 20px;">
+                Delete Event
+            </a>
+        </div>
+    </div>
+</center>
+{%endblock%}
+

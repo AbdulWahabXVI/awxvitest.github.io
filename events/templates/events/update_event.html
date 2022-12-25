@@ -1,0 +1,22 @@
+{%extends 'events/base.html'%}
+
+{%block content%}
+<center>
+    <br>
+    <h1>
+        Update Event
+    </h1>
+    <br>
+    <div class="card" style="border-radius: 20px;">
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br>
+                <input type="submit" value="Update" class="btn btn-outline-secondary btn-sm" style="border-radius: 20px;">
+            </form>
+        </div>
+    </div>  
+</center>
+{%endblock%}
+
